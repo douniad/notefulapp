@@ -1,0 +1,130 @@
+/* Header */
+
+header {
+    border-bottom: 1px solid black;
+    padding: 20px 0px;
+}
+
+h1 a {
+    padding-left: 30%;
+    text-decoration: none;
+    color: black;
+}
+
+/* App */
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    width: 30%;
+    border-right: 1px solid black;
+}
+
+main {
+    width: 100%;
+}
+
+/* Note List Nav */
+.active-folder {
+    background-color: yellow;
+}
+
+.note-list-nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.folder-item {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.folder-item a {
+    text-decoration: none;
+    color: black;
+}
+
+button.add-folder {
+    margin: 4px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+    align-self: center;
+}
+
+/* Note List Main */
+
+.note-list-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-list {
+    list-style-type: none;
+}
+
+.note-item {
+    margin-bottom: 10px;
+}
+
+button.add-note {
+    margin-left: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+}
+
+/* Note */
+
+.note-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.note-name {
+    text-decoration: none;
+    color: black;
+}
+
+h3 {
+    padding-bottom: 20px;
+}
+
+button.delete-note {
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+    align-self: flex-end;
+}
+
+/* Note Page Nav */
+
+.note-page-nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+button.go-back {
+    margin: 10px 0px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+    align-self: center;
+}
+
+.note-nav-container h3 {
+    text-align: center;
+}
+
+/* Note Page Main */
+
+.note-content {
+    margin-left: 10px;
+}
