@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import NotefulContext from '../NotefulContext'
 
 class Note extends Component {
+    static contextType = NotefulContext
+
+    afterDelete = () => {
+        this.context.deleteNote(this.props.id)
+        this.props.history.push("/")
+    }
     render() {
         return (
             <div className="note-container">
@@ -10,7 +17,7 @@ class Note extends Component {
                     <Link to={`/notes/${this.props.id}`} className="note-name">{this.props.name}</Link>
                 </h3>
                 <p className="modified">{this.props.modified}</p>
-                <button type="button" className="delete-note">Delete Note</button>
+                <button onClick={() => this.afterDelete()} type="button" className="delete-note">Delete Note</button>
             </div>
         )
     }

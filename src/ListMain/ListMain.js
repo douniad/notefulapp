@@ -12,6 +12,7 @@ class ListMain extends Component {
                     {this.props.notes.map(note =>
                         <li className="note-item" key={note.id}>
                             <Note 
+                            history={this.props.history}
                             id={note.id}
                             name={note.name}
                             modified={note.modified} />
