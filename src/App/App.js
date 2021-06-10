@@ -118,7 +118,7 @@ class App extends Component {
               <Route path="/folders/:folderId" render={(routeProps) => {
                 const folderId = routeProps.match.params.folderId;
                 const selectedFolder = this.state.folders.find(folder => folder.id === folderId);
-
+if (!selectedFolder) return
                 return <ListNav folders={this.state.folders} selectedFolder={selectedFolder.name} {...routeProps} />
               }}
               />

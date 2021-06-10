@@ -15,7 +15,7 @@ class ListNav extends Component {
                         </li>
                     )}
                 </ul>
-                <NavLink to={`/addfolder`} className="add-folder">Add Folder</NavLink>
+                <NavLink to={`/addfolder`} className="add-folder"><button type="button" className="add-note">Add Folder</button></NavLink>
             </div>
         )
     }

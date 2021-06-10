@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import NotefulContext from '../NotefulContext'
 
@@ -23,7 +23,7 @@ class Note extends Component {
     }
 }
 
-export default Note;
+export default withRouter(Note);
 
 Note.propTypes = {
     id: PropTypes.string,

@@ -19,8 +19,7 @@ class ListMain extends Component {
                         </li>
                     )}
                 </ul>
-                <NavLink to={'/addnote'}>Add Note</NavLink>
-                <button type="button" className="add-note">Add Note</button>
+                <NavLink to={'/addnote'}><button type="button" className="add-note">Add Note</button></NavLink>
             </section>
         )
     }
