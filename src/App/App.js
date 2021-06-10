@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 import './App.css';
-import DummyStore from '../dummy-store';
+import config from "../config";
 import Header from '../Header/Header';
 import ListNav from '../ListNav/ListNav';
 import ListMain from '../ListMain/ListMain';
@@ -21,13 +21,13 @@ class App extends Component {
     notes: [],
   }
   componentDidMount() {
-    fetch('http://localhost:8000/folders')
+    fetch(config.API_ENDPOINT+'/folders')
       .then(res => res.json())
       .then(folders => {
         this.setState({
           folders
         })
-        return fetch('http://localhost:8000/notes')
+        return fetch(config.API_ENDPOINT+'/notes')
       })
       .then(res => res.json())
       .then(notes => {
@@ -43,7 +43,7 @@ class App extends Component {
     console.log('hello world')
     const name = e.target.name.value
     const folder = { name, id: uuidv4() }
-    fetch('http://localhost:8000/folders', {
+    fetch(config.API_ENDPOINT+'/folders', {
       method: 'post',
       headers: {
         'content-type': 'application/json'
@@ -66,7 +66,7 @@ class App extends Component {
     const folderId = e.target.folderId.value
     const modified = (new Date()).toString()
     const note = { name, content, folderId, id: uuidv4(), modified }
-    fetch('http://localhost:8000/notes', {
+    fetch(config.API_ENDPOINT+'/notes', {
       method: 'post',
       headers: {
         'content-type': 'application/json'
@@ -84,11 +84,11 @@ class App extends Component {
 
   deleteNote = (id) => {
     console.log('hello')
-   fetch(`http://localhost:8000/notes/${id}`, {
+   fetch(config.API_ENDPOINT+`/notes/${id}`, {
    method: 'delete'})
    .then(res => {
      this.setState({
-       notes: this.state.notes.filter(note => note.id != id)
+       notes: this.state.notes.filter(note => note.id !== id)
      })
    })
   }
@@ -109,8 +109,8 @@ class App extends Component {
             <nav>
               <Route path="/notes/:noteId" render={(routeProps) => {
                 const noteId = routeProps.match.params.noteId
-                const selectedNote = this.state.notes.find(note => note.id == noteId) || {}
-                const selectedFolder = this.state.folders.find(folder => folder.id == selectedNote.folderId) || {};
+                const selectedNote = this.state.notes.find(note => note.id === parseInt(noteId)) || {}
+                const selectedFolder = this.state.folders.find(folder => folder.id === selectedNote.folderId) || {};
 
                 return <PageNav folderName={selectedFolder.name} {...routeProps} />
               }}
@@ -129,14 +129,14 @@ if (!selectedFolder) return
             <main>
               <Route path="/notes/:noteId" render={(routeProps) => {
                 const noteId = routeProps.match.params.noteId
-                const selectedNote = this.state.notes.find(note => note.id == noteId) || {}
+                const selectedNote = this.state.notes.find(note => note.id === parseInt(noteId)) || {}
 
                 return <PageMain selectedNote={selectedNote} {...routeProps} />
               }}
               />
               <Route path="/folders/:folderId" render={(routeProps) => {
                 const folderId = routeProps.match.params.folderId
-                const selectedFolder = this.state.folders.find(folder => folder.id == folderId) || {}
+                const selectedFolder = this.state.folders.find(folder => folder.id === parseInt(folderId)) || {}
                 const notesInFolder = this.state.notes.filter(note => {
                   return note.folderId === selectedFolder.id;
                 });
