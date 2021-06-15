@@ -14,7 +14,7 @@ export default function AddFolder(props) {
             return (
                 <form onSubmit={onFolderSubmit}>
                     <label>Folder Name</label>
-                    <input type="text" name="name" required="required"/>
+                    <input type="text" name="name"/>
                     <button>Save Folder</button>
                 </form>
             )
