@@ -8,7 +8,7 @@ export default function AddFolder(props) {
         {value => {
             function onFolderSubmit(e) {
                 value.addFolder(e)
-                props.history.push('/')
+                props.history.push('/addnote')
 
             }
             return (
