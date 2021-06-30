@@ -26,7 +26,7 @@ class Note extends Component {
 export default withRouter(Note);
 
 Note.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     name: PropTypes.string,
     modified: PropTypes.string
 }
